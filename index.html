@@ -31,7 +31,7 @@
 
 window.addEventListener("message", (event) => {
 console.log("Message received from iframe:", event.data);
-
+postIframeDisable();
 if ((event.data.method === "EMBEDDED_MESSAGING_DISPATCH_EVENT_TO_HOST" && event.data.data.eventDetails.conversationEntry && event.data.data.eventDetails.conversationEntry.entryPayload)) {
 
 let payload = JSON.parse(event.data.data.eventDetails.conversationEntry.entryPayload)
