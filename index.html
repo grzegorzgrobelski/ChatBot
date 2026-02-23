@@ -23,6 +23,10 @@
 		} catch (err) {
 			console.error('Error loading Embedded Messaging: ', err);
 		}
+
+        var iframe = document.getElementById("embeddedMessagingFrame");
+        console.log("Iframe element: ", iframe);
+        iframe.contentWindow.postMessage('InputDisable', '*');
 	};
 </script>
 <script>
