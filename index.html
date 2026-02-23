@@ -25,5 +25,42 @@
         };
     </script>
     <script type='text/javascript' src='https://foundationgs1poland2--newopptype.sandbox.my.site.com/ESWDemoEmbeddedGS11771865042666/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+    <script>
+    // Event listener – listens to every message/event from the iframe
+    window.addEventListener("message", (event) => {
+        if (
+        event.data.method === "EMBEDDED_MESSAGING_DISPATCH_EVENT_TO_HOST" &&
+        event.data.data.eventDetails.conversationEntry &&
+        event.data.data.eventDetails.conversationEntry.entryPayload
+        ) {
+        const payload = JSON.parse(
+            event.data.data.eventDetails.conversationEntry.entryPayload
+        );
+
+        if (payload.abstractMessage && payload.abstractMessage.choices) {
+            postIframeDisable();
+        } else if (
+            payload.abstractMessage &&
+            payload.abstractMessage.choicesResponse
+        ) {
+            postIframeEnable();
+        }
+        }
+    });
+
+    // Post message to enable user input
+    function postIframeEnable() {
+        const iframe = document.getElementById("embeddedMessagingFrame");
+        iframe.contentWindow.postMessage("InputEnable");
+    }
+
+    // Post message to disable user input
+    function postIframeDisable() {
+        const iframe = document.getElementById("embeddedMessagingFrame");
+        iframe.contentWindow.postMessage("InputDisable");
+    }
+    </script>
+
 </body>
 </html>
