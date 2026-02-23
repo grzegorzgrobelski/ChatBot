@@ -49,12 +49,12 @@
 
         function postIframeEnable() {
             var iframe = document.getElementById("embeddedMessagingFrame");
-            iframe.contentWindow.postMessage('InputEnable');
+            iframe.contentWindow.postMessage('InputEnable', '*');
         }
 
         function postIframeDisable() {
             var iframe = document.getElementById("embeddedMessagingFrame");
-            iframe.contentWindow.postMessage('InputDisable');
+            iframe.contentWindow.postMessage('InputDisable', '*');
         }
     </script>
     <script type='text/javascript' src='https://foundationgs1poland2--newopptype.sandbox.my.site.com/ESWDemoEmbeddedGS11771865042666/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
