@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>External Live Agent</title>
 </head>
 <body>
-    <h1>Hello Chat</h1>
+    <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+            try {
+                embeddedservice_bootstrap.settings.language = 'pl'; // For example, enter 'en' or 'en-US'
+
+                embeddedservice_bootstrap.init(
+                    '00D9O00000PCIdt',
+                    'Demo_Embedded_GS1',
+                    'https://foundationgs1poland2--newopptype.sandbox.my.site.com/ESWDemoEmbeddedGS11771865042666',
+                    {
+                        scrt2URL: 'https://foundationgs1poland2--newopptype.sandbox.my.salesforce-scrt.com'
+                    }
+                );
+            } catch (err) {
+                console.error('Error loading Embedded Messaging: ', err);
+            }
+        };
+    </script>
+    <script type='text/javascript' src='https://foundationgs1poland2--newopptype.sandbox.my.site.com/ESWDemoEmbeddedGS11771865042666/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 </body>
 </html>
