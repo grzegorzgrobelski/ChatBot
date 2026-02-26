@@ -47,12 +47,15 @@
 
         function postIframeEnable() {
             var iframe = document.getElementById("embeddedMessagingFrame");
-            //iframe.contentWindow.postMessage('InputEnable', '*');
+            iframe.contentWindow.postMessage('InputEnable', '*');
         }
 
         function postIframeDisable() {
-            var iframe = document.getElementById("embeddedMessagingFrame");
-            //iframe.contentWindow.postMessage('InputDisable', '*');
+            let alreadyHidden = document.getElementById('embeddedMessagingBootstrapStyles').textContent.includes('embeddedMessagingInputFooterTextArea.slds-textarea {\n            display: none !important;')
+            if (!alreadyHidden) {
+                var iframe = document.getElementById("embeddedMessagingFrame");
+                iframe.contentWindow.postMessage('InputDisable', '*');
+            }
         }
 
     </script>
