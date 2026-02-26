@@ -50,13 +50,11 @@
         function postIframeEnable() {
             var iframe = document.getElementById("embeddedMessagingFrame");
             iframe.contentWindow.postMessage('InputEnable', '*');
-            iframe.style.display = "block";
         }
 
         function postIframeDisable() {
             var iframe = document.getElementById("embeddedMessagingFrame");
             iframe.contentWindow.postMessage('InputDisable', '*');
-            iframe.style.display = "none";
         }
     </script>
     <script type='text/javascript' src='https://foundationgs1poland2--newopptype.sandbox.my.site.com/ESWDemoEmbeddedGS11771865042666/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
