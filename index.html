@@ -38,7 +38,9 @@
                     event.data.data.eventDetails.conversationEntry.entryPayload &&
                     event.data.data.eventDetails.conversationEntry.entryType === "ParticipantChanged" 
                 ) {
-                    postIframeEnable();
+                    console.log('ParticipantChanged event detected');
+                    
+                    //postIframeEnable();
                 }
         
 
