@@ -19,7 +19,6 @@
                         scrt2URL: 'https://foundationgs1poland2--newopptype.sandbox.my.salesforce-scrt.com'
                     }
                 );
-                disableInputWhenIframeReady();
                 addBlockEvent();
             } catch (err) {
                 console.error('Error loading Embedded Messaging: ', err);
@@ -57,21 +56,6 @@
             var iframe = document.getElementById("embeddedMessagingFrame");
             iframe.contentWindow.postMessage('InputDisable', '*');
         }
-
-        
-        function disableInputWhenIframeReady() {
-                const observer = new MutationObserver(() => {
-                    const iframe = document.getElementById("embeddedMessagingFrame");
-
-                    if (iframe && iframe.contentWindow) {
-                        console.log("Iframe found -> Disabling input BEFORE menu appears...");
-                        iframe.contentWindow.postMessage('InputDisable', '*');
-                        observer.disconnect();
-                    }
-                });
-
-                observer.observe(document.body, { childList: true, subtree: true });
-            }
 
     </script>
     <script type='text/javascript' src='https://foundationgs1poland2--newopptype.sandbox.my.site.com/ESWDemoEmbeddedGS11771865042666/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
