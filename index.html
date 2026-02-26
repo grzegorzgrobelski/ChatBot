@@ -39,6 +39,8 @@
                     if (payload.abstractMessage && payload.abstractMessage.choices) {
                         postIframeDisable();
                     } else if (payload.abstractMessage && payload.abstractMessage.choicesResponse) {
+                        console.log('payload.abstractMessage', payload.abstractMessage);
+                        console.log('payload.choicesResponse', payload.choicesResponse);
                         postIframeEnable();
                     }
                 }
@@ -51,11 +53,8 @@
         }
 
         function postIframeDisable() {
-            let alreadyHidden = document.getElementById('embeddedMessagingBootstrapStyles').textContent.includes('embeddedMessagingInputFooterTextArea.slds-textarea {\n            display: none !important;')
-            if (!alreadyHidden) {
-                var iframe = document.getElementById("embeddedMessagingFrame");
-                iframe.contentWindow.postMessage('InputDisable', '*');
-            }
+            var iframe = document.getElementById("embeddedMessagingFrame");
+            iframe.contentWindow.postMessage('InputDisable', '*');
         }
 
     </script>
