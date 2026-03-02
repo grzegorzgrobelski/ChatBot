@@ -54,7 +54,8 @@
                         participantEvent.operation === "remove" &&
                         participantEvent.participant?.role === "Agent")  {
                             console.log('Agent has left the conversation. launch chat.');
-                            embeddedservice_bootstrap.utilAPI.launchChat();
+                            embeddedservice_bootstrap.userVerificationAPI
+                                .clearSession()
                     }
                     
                 }
@@ -68,7 +69,7 @@
 
         function postIframeDisable() {
             var iframe = document.getElementById("embeddedMessagingFrame");
-            //iframe.contentWindow.postMessage('InputDisable', '*');
+            iframe.contentWindow.postMessage('InputDisable', '*');
         }
 
     </script>
