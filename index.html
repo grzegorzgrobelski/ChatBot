@@ -20,6 +20,7 @@
                     }
                 );
                 addBlockEvent();
+                addSessionStatusUpdate();
             } catch (err) {
                 console.error('Error loading Embedded Messaging: ', err);
             }
@@ -47,6 +48,24 @@
                     } else {
                         postIframeDisable();
                     }
+                }
+            });
+        }
+
+        function addSessionStatusUpdate() {
+            window.addEventListener("onEmbeddedMessagingSessionStatusUpdate", (event) => {
+                const tempContent = event.detail;
+                const sessionData = JSON.parse(tempContent.conversationEntry.entryPayload);
+                if (
+                    sessionData.sessionStatus === "Ended" &&
+                    sessionData.sessionStatusPrev === "Active" && 
+                    sessionData.sessionEndedByRole === 'Agent' 
+                ) {
+                    embeddedservice_bootstrap.userVerificationAPI
+                    .clearSession()
+                    .catch((error) => {
+                        console.error("Error clearing session:", error);
+                    })
                 }
             });
         }
