@@ -9,14 +9,6 @@
     <script type='text/javascript'>
         function initEmbeddedMessaging() {
             try {
-                window.addEventListener("onEmbeddedMessagingSessionStatusUpdate", (event) => {
-                    console.log("START:: Status Update");
-                    
-                });
-
-
-
-
                 embeddedservice_bootstrap.settings.language = 'pl'; // For example, enter 'en' or 'en-US'
 
                 embeddedservice_bootstrap.init(
@@ -57,6 +49,14 @@
                     } else {
                         postIframeDisable();
                     }
+
+                    if (participantEvent &&
+                        participantEvent.operation === "remove" &&
+                        participantEvent.participant?.role === "Agent")  {
+                            console.log('Agent has left the conversation. launch chat.');
+                            embeddedservice_bootstrap.utilAPI.launchChat();
+                        }
+                    
                 }
             });
         }
