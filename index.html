@@ -20,37 +20,6 @@
                     }
                 );
                 addBlockEvent();
-
-                window.addEventListener("onEmbeddedMessagingSessionStatusUpdate", (event) => {
-                    console.log("START:: Status Update");
-                
-                    const tempContent = event.detail;
-                    console.log(JSON.stringify(tempContent));
-                    const sessionData = JSON.parse(tempContent.conversationEntry.entryPayload);
-
-                    if (
-                        sessionData.sessionStatus === "Ended" &&
-                        sessionData.sessionStatusPrev === "Active" && 
-                        sessionData.sessionEndedByRole === 'Agent' 
-                    ) {
-                        console.log("Active Session ended");
-                        embeddedservice_bootstrap.userVerificationAPI
-                        .clearSession()
-                        .then(() => {
-                            console.log("Session cleared successfully.");
-                        })
-                        .catch((error) => {
-                            console.error("Error clearing session:", error);
-                        })
-                        .finally(() => {
-                            console.log("clearSession finally.");
-                            window.alert("Agent Ended the Chat!!!");
-                        });
-                    }
-                    
-                    console.log("END:: Status Update");
-                });
-
             } catch (err) {
                 console.error('Error loading Embedded Messaging: ', err);
             }
@@ -65,6 +34,7 @@
                     event.data.data.eventDetails.conversationEntry.entryPayload &&
                     event.data.data.eventDetails.conversationEntry.entryType === "ParticipantChanged"
                 ) {
+                    console.log(event.data);
                     const entry = event.data.data.eventDetails.conversationEntry;
                     const payload = JSON.parse(entry.entryPayload);
 
@@ -81,11 +51,6 @@
                 }
             });
         }
-
-        function addSessionStatusUpdate() {
-            
-        }
-
 
         function postIframeEnable() {
             var iframe = document.getElementById("embeddedMessagingFrame");
