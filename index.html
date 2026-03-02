@@ -56,8 +56,7 @@
                             console.log('Agent has left the conversation. launch chat.');
                             //embeddedservice_bootstrap.userVerificationAPI
                             //    .clearSession()
-
-
+                            embeddedservice_bootstrap.utilAPI.sendTextMessage('Agent zakończył rozmowę. Zostałeś przeniesiony do menu głównego.')
                     }
                     
                 }
@@ -71,7 +70,7 @@
 
         function postIframeDisable() {
             var iframe = document.getElementById("embeddedMessagingFrame");
-            //iframe.contentWindow.postMessage('InputDisable', '*');
+            iframe.contentWindow.postMessage('InputDisable', '*');
         }
 
     </script>
