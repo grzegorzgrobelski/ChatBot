@@ -88,20 +88,8 @@
 
     <script>
         function launchChat() {
-            initEmbeddedMessaging();
-            setTimeout(() => {
-                embeddedservice_bootstrap.utilAPI
-                    .launchChat()
-                    .then(() => {
-                        console.log("Inside Launch Chat");
-                    })
-                    .catch(() => {
-                        console.log("Inside Launch Chat catch Block");
-                    })
-                    .finally(() => {
-                        console.log("Inside Launch Chat finally Block");
-                    });
-            }, 2000);
+            embeddedservice_bootstrap.utilAPI
+                    .launchChat();
             
         }
     </script>
