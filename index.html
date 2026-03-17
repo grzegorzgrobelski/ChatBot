@@ -10,7 +10,8 @@
         function initEmbeddedMessaging() {
             try {
                 embeddedservice_bootstrap.settings.language = 'pl'; // For example, enter 'en' or 'en-US'
-                embeddedservice_bootstrap.settings.chatButtonPosition = "100px,100px";
+                embeddedservice_bootstrap.settings.hideChatButtonOnLoad = true;
+                embeddedservice_bootstrap.settings.chatButtonPosition = "500px,500px";
 
 
                 embeddedservice_bootstrap.init(
@@ -82,7 +83,21 @@
     </script>
     <script type='text/javascript' src='https://foundationgs1poland2--newopptype.sandbox.my.site.com/ESWDemoEmbeddedGS11771865042666/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
-    <img src="https://iili.io/qWw4g2e.png" width="500" height="600" onclick="launchChat()">
+
+    <img
+    src="https://iili.io/qWw4g2e.png"
+    width="200"
+    height="150"
+    onclick="launchChat()"
+    style="
+        width: 200px;
+        height: 150px;
+        position: absolute;
+        bottom: 42px;
+        right: 30px;
+        cursor: pointer;
+    "
+    >
 
 
     <script>
