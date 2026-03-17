@@ -6,6 +6,26 @@
     <title>External Live Agent</title>
 </head>
 <body>
+    <button id="myChatButton" style="
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 16px;
+        border-radius: 8px;
+        background: #0176d3;
+        color: white;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    ">
+        <img src="https://iili.io/qWw4g2e.png"
+            alt="Chat Icon"
+            style="width: 22px; height: 22px;" />
+        Porozmawiaj z nami
+    </button>
+
+
+
     <script type='text/javascript'>
         function initEmbeddedMessaging() {
             try {
@@ -16,13 +36,18 @@
                     'Demo_Embedded_GS1',
                     'https://foundationgs1poland2--newopptype.sandbox.my.site.com/ESWDemoEmbeddedGS11771865042666',
                     {
-                        scrt2URL: 'https://foundationgs1poland2--newopptype.sandbox.my.salesforce-scrt.com'
+                        scrt2URL: 'https://foundationgs1poland2--newopptype.sandbox.my.salesforce-scrt.com',
+                        hideChatButton: true
                     }
                 );
                 addBlockEvent();
             } catch (err) {
                 console.error('Error loading Embedded Messaging: ', err);
             }
+
+        document.getElementById("myChatButton").addEventListener("click", function(){
+                window.embeddedservice_bootstrap.utilAPI.openChat();
+            });
         };
 
         
